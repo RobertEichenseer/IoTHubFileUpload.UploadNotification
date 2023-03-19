@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DemoDevice",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildDemoDevice",
+            "program": "${workspaceFolder}/src/FileUpload.DemoDevice/bin/Debug/net7.0/FileUpload.DemoDevice.dll",
+            "args": [
+                "<<ADD DEVICE CONNECTION STRING FROM ENVCREATIONANDDEMO.azcli>> E.g.:HostName=IoTHubFileUploadSampleReceiver999.azure-devices.net;DeviceId=device01;SharedAccessKey=e/V0="
+            ],
+            "cwd": "${workspaceFolder}/src/FileUpload.DemoDevice",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "UploadNotificationService",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildUploadNotificationService",
+            "program": "${workspaceFolder}/src/FileUpload.UploadNotificationService/bin/Debug/net7.0/FileUpload.UploadNotificationService.dll",
+            "args": [
+                "HostName=<<ADD SERVICE CONNECTION STRING FROM ENVCREATINANDDMEO.azcli>> E.g.:IoTHubFileUploadSampleReceiver999.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=5Bz8="
+            ],
+            "cwd": "${workspaceFolder}/src/FileUpload.UploadNotificationService",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "Attach to .NET Functions",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:azureFunctions.pickProcess}"
+        }
+    ]
+}
